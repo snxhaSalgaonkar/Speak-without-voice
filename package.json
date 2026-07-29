@@ -1,0 +1,21 @@
+{
+  "name": "speak-without-voice",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Real-time AI-powered sign language recognition system using TensorFlow, MediaPipe, OpenCV, FastAPI, and React.",
+  "scripts": {
+    "dev:frontend": "npm run dev --prefix frontend",
+    "build:frontend": "npm run build --prefix frontend",
+    "lint:frontend": "npm run lint --prefix frontend",
+    "format:frontend": "npm run format --prefix frontend"
+  },
+  "keywords": [
+    "sign-language-recognition",
+    "fastapi",
+    "react",
+    "mediapipe",
+    "tensorflow"
+  ],
+  "author": "Speak-without-voice Authors",
+  "license": "MIT"
+}

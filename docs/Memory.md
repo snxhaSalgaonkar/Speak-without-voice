@@ -7,10 +7,10 @@ This file serves as the single source of truth for AI coding agents and develope
 ## Current Project Status Snapshot
 
 * **Project Name**: Speak-without-voice
-* **Current Phase**: Phase 0 — Blueprint & Architecture Documentation Complete
-* **Next Active Phase**: Phase 1 — Environment Setup & Foundation Infrastructure
+* **Current Phase**: Phase 1 — Environment Setup & Foundation Infrastructure Complete
+* **Next Active Phase**: Phase 2 — Data Collection & Preprocessing Pipeline
 * **Active Branch**: `main`
-* **Last Updated**: Phase 0 Sign-Off
+* **Last Updated**: Phase 1 Sign-Off
 
 ---
 
@@ -19,8 +19,8 @@ This file serves as the single source of truth for AI coding agents and develope
 | Phase | Phase Name | Status | Completion Date |
 | :--- | :--- | :--- | :--- |
 | **Phase 0** | Blueprint & System Architecture Documentation | **Completed** | Phase 0 Milestone |
-| **Phase 1** | Environment Setup & Foundation Infrastructure | **Pending** | Target Next |
-| **Phase 2** | Data Collection & Preprocessing Pipeline | **Pending** | Scheduled |
+| **Phase 1** | Environment Setup & Foundation Infrastructure | **Completed** | Phase 1 Milestone |
+| **Phase 2** | Data Collection & Preprocessing Pipeline | **Pending** | Target Next |
 | **Phase 3** | ML Model Development, Training & Evaluation | **Pending** | Scheduled |
 | **Phase 4** | FastAPI Backend REST Service Implementation | **Pending** | Scheduled |
 | **Phase 5** | React Frontend UI & MediaPipe Web Integration | **Pending** | Scheduled |
@@ -37,15 +37,21 @@ This file serves as the single source of truth for AI coding agents and develope
 * Documented Development Rules (`Rules.md`) establishing PEP 8, ESLint, security guidelines, and AI agent boundaries.
 * Documented Development Phases (`Phases.md`) structuring 8 sequential implementation phases with Definition of Done criteria.
 * Documented Design System (`Design.md`) specifying Dark Glassmorphism theme, HSL color tokens, typography scales, responsive layouts, and WCAG AA accessibility.
-* Documented AI Memory File (`Memory.md`).
+* Configured backend directory layout and application entry point (`backend/app/main.py`).
+* Implemented type-safe Pydantic BaseSettings environment loader (`backend/app/core/config.py`).
+* Implemented production-grade structured logging system (`backend/app/core/logging.py`).
+* Implemented domain exception hierarchy and global FastAPI exception handlers (`backend/app/core/errors.py`).
+* Implemented CORS security middleware policies (`backend/app/core/security.py`).
+* Implemented `GET /api/v1/health` monitoring endpoint and schemas (`backend/app/api/v1/endpoints/health.py`).
+* Configured frontend React application layout, index.html, Vite config, and Dark Glassmorphic CSS custom properties (`frontend/`).
+* Configured Python code quality tooling (`pyproject.toml` for Ruff/Black/isort) and JavaScript code quality configs (`.prettierrc`, `.eslintrc.json`).
+* Configured Git repository governance (`.gitignore`, `LICENSE`, `README.md`).
 
 ### Pending Features (MVP)
-* Backend environment setup and virtualenv dependency configuration (`Phase 1`).
-* Frontend React project initialization (`Phase 1`).
 * MediaPipe 3D hand landmark dataset collection script (`Phase 2`).
 * Coordinate normalization and scaler preprocessing pipeline (`Phase 2`).
 * TensorFlow/Keras Dense Neural Network training and export scripts (`Phase 3`).
-* FastAPI REST API endpoints (`/predict`, `/health`) and Pydantic schemas (`Phase 4`).
+* FastAPI REST API endpoint `/predict` and Pydantic schemas (`Phase 4`).
 * React webcam component, MediaPipe browser extraction, and UI layout (`Phase 5`).
 * End-to-end system integration, performance tuning, and latency validation (`Phase 6`).
 
@@ -57,6 +63,7 @@ This file serves as the single source of truth for AI coding agents and develope
 2. **FastAPI + TensorFlow Backend**: Backend leverages FastAPI for asynchronous, non-blocking REST handling, coupling directly with a trained Keras model.
 3. **Vanilla CSS Design System Tokens**: Styling uses CSS Modules and native custom properties without external utility frameworks to maintain total aesthetic control and lightweight bundle sizes.
 4. **Stateless Prediction API**: Each `/predict` request contains the full normalized landmark array, enabling zero server session state and easy horizontal scaling.
+5. **Zero Command Execution Policy**: AI agent strictly enforces zero terminal execution rules, creating all source code directly and delegating package installation to manual developer execution.
 
 ---
 
@@ -66,77 +73,97 @@ This file serves as the single source of truth for AI coding agents and develope
 * `fastapi`: API endpoint router framework.
 * `uvicorn`: ASGI web server engine.
 * `pydantic`: Schema validation and settings management.
+* `pydantic-settings`: Environment settings loader.
+* `python-dotenv`: Environment file parsing.
 * `tensorflow`: Neural network model execution.
 * `numpy`: Matrix and coordinate array math.
 * `scikit-learn`: Feature scaling and preprocessing.
+* `ruff`, `black`, `isort`: Python linters and formatters.
 
 ### Frontend (JavaScript / React)
 * `react` & `react-dom`: Component tree framework.
 * `react-webcam`: Standardized cross-browser camera feed component.
 * `axios`: Promise-based HTTP API client.
 * `@mediapipe/hands`: Browser-side hand keypoint tracking SDK.
+* `vite`: High-performance frontend bundler.
+* `eslint`, `prettier`: Code quality & formatting tools.
 
 ---
 
 ## File Manifest Log
 
-### Files Created (Phase 0)
-* `docs/PRD.md` — Product Requirements Document.
-* `docs/Architecture.md` — System Architecture & Educational Patterns.
-* `docs/Rules.md` — Engineering Standards & AI Operational Boundaries.
-* `docs/Phases.md` — Development Roadmap & Phase Sequence.
-* `docs/Design.md` — UI/UX Design System Blueprint.
-* `docs/Memory.md` — AI Project Context & Memory Log.
-
-### Files Remaining to Create (Phases 1–6)
+### Files Created / Configured (Phase 0 & 1)
+* `docs/PRD.md`
+* `docs/Architecture.md`
+* `docs/Rules.md`
+* `docs/Phases.md`
+* `docs/Design.md`
+* `docs/Memory.md`
+* `LICENSE`
+* `.gitignore`
+* `.env.example`
+* `pyproject.toml`
+* `.prettierrc`
+* `.eslintrc.json`
+* `README.md`
+* `requirements.txt`
+* `package.json`
+* `backend/requirements.txt`
 * `backend/app/main.py`
 * `backend/app/core/config.py`
+* `backend/app/core/constants.py`
 * `backend/app/core/logging.py`
-* `backend/app/api/v1/endpoints/predict.py`
+* `backend/app/core/errors.py`
+* `backend/app/core/security.py`
+* `backend/app/schemas/health_schema.py`
+* `backend/app/schemas/error_schema.py`
 * `backend/app/api/v1/endpoints/health.py`
+* `backend/app/api/v1/router.py`
+* `backend/app/api/dependencies.py`
+* `frontend/package.json`
+* `frontend/public/index.html`
+* `frontend/vite.config.js`
+* `frontend/src/assets/styles/variables.css`
+* `frontend/src/assets/styles/global.css`
+* `frontend/src/utils/constants.js`
+* `frontend/src/App.jsx`
+* `frontend/src/main.jsx`
+* `tests/backend/__init__.py`
+* `tests/backend/unit/__init__.py`
+* `tests/backend/integration/__init__.py`
+* `tests/frontend/.gitkeep`
+
+### Files Remaining to Create (Phases 2–6)
+* `data/dataset_collector.py`
 * `backend/app/services/landmark_preprocessor.py`
 * `backend/app/services/gesture_classifier.py`
 * `backend/app/schemas/landmark_schema.py`
 * `backend/app/schemas/prediction_schema.py`
-* `backend/requirements.txt`
-* `frontend/src/App.jsx`
+* `backend/app/api/v1/endpoints/predict.py`
 * `frontend/src/components/WebcamFeed/WebcamFeed.jsx`
 * `frontend/src/components/PredictionDisplay/PredictionDisplay.jsx`
+* `frontend/src/components/GestureGuide/GestureGuide.jsx`
+* `frontend/src/components/Header/Header.jsx`
 * `frontend/src/services/api.js`
 * `frontend/src/services/mediapipe.js`
-* `frontend/package.json`
-* `data/dataset_collector.py`
 * `scripts/train_model.py`
 * `scripts/evaluate_model.py`
+* `scripts/export_model.py`
 * `models/gesture_classifier.keras`
 * `models/feature_scaler.pkl`
 * `models/label_map.json`
-* `.env.example`
-* `.gitignore`
-* `README.md`
 
 ---
 
 ## Known Issues & Technical Debt
 
-* None currently identified. All Phase 0 documentation completed cleanly without technical debt.
-
----
-
-## Instructions for AI Agents Updating This File
-
-When an AI agent completes a task or phase:
-1. Update **Current Phase** and **Next Active Phase** under Snapshot.
-2. Mark completed phases as **Completed** in the Development Phases table.
-3. Move completed features from **Pending Features** to **Completed Features**.
-4. Log newly created files in the **Files Created** manifest list.
-5. Record any new technical debt or architectural decisions made during execution.
+* None identified. Phase 1 foundation completed cleanly with zero command execution.
 
 ---
 
 ## Verification Checklist: Memory.md
 
-- [x] Complete project status snapshot documented.
+- [x] Complete project status snapshot updated for Phase 1 completion.
 - [x] All development phases tracked in structured status table.
 - [x] Completed vs Pending feature lists accurately categorized.
 - [x] Core architectural decisions logged.
