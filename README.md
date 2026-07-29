@@ -5,6 +5,16 @@
 **Speak-without-voice** is an open-source, web-based sign language recognition application. It extracts 3D hand keypoint landmarks in the browser using MediaPipe, transmits spatial coordinate vectors to a high-performance Python FastAPI backend, and classifies static sign gestures (`Hello`, `Thanks`, `Yes`, `No`, `I Love You`) using a trained TensorFlow Keras Dense Neural Network.
 
 ---
+## to run
+From frontend folder: 
+npm install
+npm run dev
+
+from backend folder:
+.\.venv\Scripts\activate
+cd .. 
+uvicorn backend.app.main:app --reload --port 8000 
+
 
 ## System Architecture Blueprint
 
