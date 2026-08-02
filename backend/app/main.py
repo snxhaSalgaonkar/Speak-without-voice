@@ -13,6 +13,7 @@ from app.core.config import settings
 from app.core.constants import API_V1_STR, PROJECT_NAME, VERSION
 from app.core.logging import logger
 from app.core.security import setup_cors
+# pyrefly: ignore [missing-import]
 from app.core.errors import (
     AppException,
     app_exception_handler,
