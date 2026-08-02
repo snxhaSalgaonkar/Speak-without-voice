@@ -12,7 +12,7 @@ numpy==1.26.4
 scikit-learn==1.4.0
 tensorflow==2.15.0
 opencv-python>=4.8.0.76
-mediapipe>=0.10.7
+mediapipe>=0.10.7,<1.0.0
 
 # Code Quality & Formatting
 ruff==0.2.1
