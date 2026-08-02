@@ -4,7 +4,7 @@ Aggregates all sub-routers (health, predict) under the /api/v1 prefix.
 """
 
 from fastapi import APIRouter
-from backend.app.api.v1.endpoints import health
+from app.api.v1.endpoints import health
 
 api_v1_router = APIRouter()
 

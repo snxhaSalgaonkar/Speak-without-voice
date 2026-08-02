@@ -4,9 +4,9 @@ Provides GET /health REST route for system monitoring and liveness checks.
 """
 
 from fastapi import APIRouter, status
-from backend.app.schemas.health_schema import HealthCheckResponse
-from backend.app.core.config import settings
-from backend.app.core.constants import VERSION
+from app.schemas.health_schema import HealthCheckResponse
+from app.core.config import settings
+from app.core.constants import VERSION
 
 router = APIRouter()
 

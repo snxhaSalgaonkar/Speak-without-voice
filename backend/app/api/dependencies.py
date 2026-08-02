@@ -3,7 +3,7 @@
 Provides shared dependencies for route handlers (e.g., Settings, Services).
 """
 
-from backend.app.core.config import Settings, settings
+from app.core.config import Settings, settings
 
 
 def get_settings() -> Settings:

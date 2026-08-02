@@ -9,7 +9,7 @@ from fastapi import Request, status
 from fastapi.responses import JSONResponse
 from datetime import datetime
 
-from backend.app.core.logging import logger
+from app.core.logging import logger
 
 
 class AppException(Exception):

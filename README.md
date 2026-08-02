@@ -12,8 +12,7 @@ npm run dev
 
 from backend folder:
 .\.venv\Scripts\activate
-cd .. 
-uvicorn backend.app.main:app --reload --port 8000 
+uvicorn app.main:app --reload --port 8000
 
 
 ## System Architecture Blueprint
@@ -65,20 +64,20 @@ uvicorn backend.app.main:app --reload --port 8000
 
 
 ```bash
-# Create Python virtual environment
+# Navigate to backend directory
+cd backend
+
+# Create Python virtual environment inside backend/
 python -m venv .venv
 
 # Activate virtual environment (Windows PowerShell)
-.venv\Scripts\activate
+.\.venv\Scripts\activate
 
 # Install backend dependencies
-pip install -r backend/requirements.txt
+pip install -r requirements.txt
 
-# Copy environment variables template
-cp .env.example .env
-
-# Run FastAPI development server
-uvicorn backend.app.main:app --reload --port 8000
+# Run FastAPI development server from backend/
+uvicorn app.main:app --reload --port 8000
 ```
 Verify the server is live by navigating to:
 * **Health Check**: [http://localhost:8000/api/v1/health](http://localhost:8000/api/v1/health)

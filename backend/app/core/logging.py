@@ -7,7 +7,7 @@ log levels, and module name context. Replaces raw print() calls.
 import sys
 import logging
 from typing import Optional
-from backend.app.core.config import settings
+from app.core.config import settings
 
 
 class CustomFormatter(logging.Formatter):

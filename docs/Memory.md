@@ -7,10 +7,10 @@ This file serves as the single source of truth for AI coding agents and develope
 ## Current Project Status Snapshot
 
 * **Project Name**: Speak-without-voice
-* **Current Phase**: Phase 1 — Environment Setup & Foundation Infrastructure Complete
-* **Next Active Phase**: Phase 2 — Data Collection & Preprocessing Pipeline
+* **Current Phase**: Phase 2 — Data Collection & Preprocessing Pipeline Complete
+* **Next Active Phase**: Phase 3 — ML Model Development, Training & Evaluation
 * **Active Branch**: `main`
-* **Last Updated**: Phase 1 Sign-Off
+* **Last Updated**: Phase 2 Sign-Off
 
 ---
 
@@ -20,8 +20,8 @@ This file serves as the single source of truth for AI coding agents and develope
 | :--- | :--- | :--- | :--- |
 | **Phase 0** | Blueprint & System Architecture Documentation | **Completed** | Phase 0 Milestone |
 | **Phase 1** | Environment Setup & Foundation Infrastructure | **Completed** | Phase 1 Milestone |
-| **Phase 2** | Data Collection & Preprocessing Pipeline | **Pending** | Target Next |
-| **Phase 3** | ML Model Development, Training & Evaluation | **Pending** | Scheduled |
+| **Phase 2** | Data Collection & Preprocessing Pipeline | **Completed** | Phase 2 Milestone |
+| **Phase 3** | ML Model Development, Training & Evaluation | **Pending** | Target Next |
 | **Phase 4** | FastAPI Backend REST Service Implementation | **Pending** | Scheduled |
 | **Phase 5** | React Frontend UI & MediaPipe Web Integration | **Pending** | Scheduled |
 | **Phase 6** | System Integration, End-to-End Testing & Polish | **Pending** | Scheduled |
@@ -44,13 +44,15 @@ This file serves as the single source of truth for AI coding agents and develope
 * Implemented CORS security middleware policies (`backend/app/core/security.py`).
 * Implemented `GET /api/v1/health` monitoring endpoint and schemas (`backend/app/api/v1/endpoints/health.py`).
 * Configured frontend React application layout, index.html, Vite config, and Dark Glassmorphic CSS custom properties (`frontend/`).
-* Configured Python code quality tooling (`pyproject.toml` for Ruff/Black/isort) and JavaScript code quality configs (`.prettierrc`, `.eslintrc.json`).
-* Configured Git repository governance (`.gitignore`, `LICENSE`, `README.md`).
+* Configured Python code quality tooling (`pyproject.toml`) and JavaScript code quality configs (`.prettierrc`, `.eslintrc.json`).
+* Built MediaPipe 3D hand landmark dataset collection utility (`data/dataset_collector.py`).
+* Built spatial coordinate translation & scale invariance preprocessor (`backend/app/services/landmark_preprocessor.py`).
+* Created test verification protocol document (`TEST_PHASE_2.md`).
 
 ### Pending Features (MVP)
-* MediaPipe 3D hand landmark dataset collection script (`Phase 2`).
-* Coordinate normalization and scaler preprocessing pipeline (`Phase 2`).
-* TensorFlow/Keras Dense Neural Network training and export scripts (`Phase 3`).
+* TensorFlow/Keras Dense Neural Network training script `scripts/train_model.py` (`Phase 3`).
+* Model evaluation script `scripts/evaluate_model.py` and confusion matrix output (`Phase 3`).
+* Model artifact export (`models/gesture_classifier.keras`, `feature_scaler.pkl`, `label_map.json`) (`Phase 3`).
 * FastAPI REST API endpoint `/predict` and Pydantic schemas (`Phase 4`).
 * React webcam component, MediaPipe browser extraction, and UI layout (`Phase 5`).
 * End-to-end system integration, performance tuning, and latency validation (`Phase 6`).
@@ -75,6 +77,8 @@ This file serves as the single source of truth for AI coding agents and develope
 * `pydantic`: Schema validation and settings management.
 * `pydantic-settings`: Environment settings loader.
 * `python-dotenv`: Environment file parsing.
+* `opencv-python`: Camera capture feed, HUD rendering, image frame disk operations.
+* `mediapipe`: 3D hand landmark tracking pipeline.
 * `tensorflow`: Neural network model execution.
 * `numpy`: Matrix and coordinate array math.
 * `scikit-learn`: Feature scaling and preprocessing.
@@ -92,7 +96,7 @@ This file serves as the single source of truth for AI coding agents and develope
 
 ## File Manifest Log
 
-### Files Created / Configured (Phase 0 & 1)
+### Files Created / Configured (Phases 0, 1 & 2)
 * `docs/PRD.md`
 * `docs/Architecture.md`
 * `docs/Rules.md`
@@ -120,6 +124,9 @@ This file serves as the single source of truth for AI coding agents and develope
 * `backend/app/api/v1/endpoints/health.py`
 * `backend/app/api/v1/router.py`
 * `backend/app/api/dependencies.py`
+* `backend/app/services/landmark_preprocessor.py`
+* `data/dataset_collector.py`
+* `TEST_PHASE_2.md`
 * `frontend/package.json`
 * `frontend/public/index.html`
 * `frontend/vite.config.js`
@@ -133,9 +140,7 @@ This file serves as the single source of truth for AI coding agents and develope
 * `tests/backend/integration/__init__.py`
 * `tests/frontend/.gitkeep`
 
-### Files Remaining to Create (Phases 2–6)
-* `data/dataset_collector.py`
-* `backend/app/services/landmark_preprocessor.py`
+### Files Remaining to Create (Phases 3–6)
 * `backend/app/services/gesture_classifier.py`
 * `backend/app/schemas/landmark_schema.py`
 * `backend/app/schemas/prediction_schema.py`
@@ -157,13 +162,13 @@ This file serves as the single source of truth for AI coding agents and develope
 
 ## Known Issues & Technical Debt
 
-* None identified. Phase 1 foundation completed cleanly with zero command execution.
+* None identified. Phase 2 completed cleanly with zero command execution.
 
 ---
 
 ## Verification Checklist: Memory.md
 
-- [x] Complete project status snapshot updated for Phase 1 completion.
+- [x] Complete project status snapshot updated for Phase 2 completion.
 - [x] All development phases tracked in structured status table.
 - [x] Completed vs Pending feature lists accurately categorized.
 - [x] Core architectural decisions logged.

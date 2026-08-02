@@ -9,16 +9,16 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
-from backend.app.core.config import settings
-from backend.app.core.constants import API_V1_STR, PROJECT_NAME, VERSION
-from backend.app.core.logging import logger
-from backend.app.core.security import setup_cors
-from backend.app.core.errors import (
+from app.core.config import settings
+from app.core.constants import API_V1_STR, PROJECT_NAME, VERSION
+from app.core.logging import logger
+from app.core.security import setup_cors
+from app.core.errors import (
     AppException,
     app_exception_handler,
     unhandled_exception_handler,
 )
-from backend.app.api.v1.router import api_v1_router
+from app.api.v1.router import api_v1_router
 
 
 @asynccontextmanager

@@ -6,8 +6,8 @@ Restricts API access to authorized frontend origins.
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from backend.app.core.config import settings
-from backend.app.core.logging import logger
+from app.core.config import settings
+from app.core.logging import logger
 
 
 def setup_cors(app: FastAPI) -> None:
